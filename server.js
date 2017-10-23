@@ -1,20 +1,22 @@
 var fs = require('fs');
 
-fs.readFile("text.json", function(err,data){
-    if (err) throw err;
-    var arr = JSON.parse(data.toString());
-    console.log(arr.name);
+fs.mkdirSync("test", function(err){
+    if (err && err.code=="EEXIST")
+    {
+        console.log(err);
+    }
+    else
+    {
+        console.log("folder create");
+    }
 });
 
-fs.readFile("stih.txt", function(err,data){
-    if (err) throw err;
-    var arr;
-    arr = data.toString().trim();
-    arr = arr.split("\r\n");
-    console.log(arr[2]);
+fs.renameSync("test","test2", function(e){
+    if (e) { console.log('error rename'); }
+    else { console.log("renamed"); }
 });
 
-var arr;
-arr = fs.readFileSync("text.txt").toString();
-
-console.log(arr);
+fs.rmdirSync("test2", function(e){
+    if (e) { console.log("error") }
+    else { console.log("Papka was deleted") }
+});
