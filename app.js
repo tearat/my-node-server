@@ -1,6 +1,5 @@
 var url = require('url');
 var fs = require('fs');
-var colors = require('colors');
 
 function renderHTML(path, response)
 {
@@ -15,7 +14,7 @@ function renderHTML(path, response)
     //end
     fs.readFile('./_end.html', null, function(error, data){
         response.write(data);
-        console.log((path.slice(2,-5)+' Successfully loaded').green)
+        console.log((path.slice(2,-5)+' Successfully loaded'))
         response.end();
     });
 }
@@ -31,7 +30,7 @@ function renderHTML2(path, response)
             //end
             fs.readFile('./_end.html', null, function(error, data){
                 response.write(data);
-                console.log((path.slice(2,-5)+' Successfully loaded').green);
+                console.log((path.slice(2,-5)+' Successfully loaded'));
                 response.end();
             });
         });
@@ -55,7 +54,8 @@ module.exports =
                 break;
             default:
                 response.writeHead(404);
-                response.write('Route not defined');
+                response.write('404');
+                console.log("Route not defined");
                 response.end();
         }
     }
