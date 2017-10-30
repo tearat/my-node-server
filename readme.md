@@ -1,3 +1,3 @@
-# lesson 06
+# 07
 
-About npm, babel, package.json
+ARgv example
