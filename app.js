@@ -1,22 +1,19 @@
 var url = require('url');
 var fs = require('fs');
 
+const routes = [
+    "/", "/login", "/auth"
+]
+
 function renderHTML(path, response)
 {
-    //head
-    fs.readFile('./_head.html', null, function(error, data){
-        response.write(data);
-        //file
-        fs.readFile(path, null, function(error, data){
-            response.write(data);
-            //end
-            fs.readFile('./_end.html', null, function(error, data){
-                response.write(data);
-                console.log((path.slice(2,-5)+' Successfully loaded'));
-                response.end();
-            });
-        });
-    });
+    var head = fs.readFileSync('./views/_head.html');
+    var body = fs.readFileSync(path);
+    var end = fs.readFileSync('./views/_end.html');
+    var data = head+body+end;
+    response.write(data);
+    console.log((path.slice(1,-5)+' Successfully loaded'));
+    response.end();
 }
 
 module.exports = 
@@ -26,19 +23,21 @@ module.exports =
         response.writeHead(200, {'Content-type': 'text/html'});
         
         var path = url.parse(request.url).pathname;
-        switch (path)
+        
+        if ( path == "/" )
         {
-            case '/':
-                renderHTML('./index.html', response);
-                break;
-            case '/login':
-                renderHTML('./login.html', response);
-                break;
-            default:
-                response.writeHead(404);
-                response.write('404');
-                console.log("Route not defined");
-                response.end();
+            renderHTML('./views/index.html', response);
+        }
+        else if ( routes.indexOf(path) != -1 )
+        {
+            renderHTML('./views'+path+'.html', response);
+        }
+        else 
+        {
+            console.log("Route not exist (404)");
+            response.writeHead(404);
+            response.write('404');
+            response.end();
         }
     }
 };
