@@ -1,0 +1,25 @@
+{
+  "name": "my-node-server",
+  "version": "1.0.0",
+  "description": "You are in 00_render_page branch",
+  "main": "app.js",
+  "dependencies": {
+    "clear": "^0.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teraaret/my-node-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teraaret/my-node-server/issues"
+  },
+  "homepage": "https://github.com/teraaret/my-node-server#readme"
+}
