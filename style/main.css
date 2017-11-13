@@ -7,8 +7,22 @@ body {
     min-width: 400px;
     background-color: #eee;
     font-family: 'Roboto Condensed', sans-serif;
+    font-size: 20px;
 }
 
 nav {
     background-color: #fff;
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ddd;
+    margin-right: -5px;
+    color: #111;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #aaa;
 }
